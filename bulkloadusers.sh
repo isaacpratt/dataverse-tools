@@ -4,7 +4,7 @@
 # http://guides.dataverse.org/en/latest/api/native-api.html#builtin-users
 
 host="" # Dataverse host URL
-temppass="" # Temporary password to set for users
+temppass="" # Temporary password to set for users - could update this script in the future to randomly generate a password per user
 builtinkey="" # Built in users key - see the API guide to generate
 jsondir="" # Directory where the json files are stored
 
