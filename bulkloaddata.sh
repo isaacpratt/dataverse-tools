@@ -28,23 +28,23 @@ WAIT=0
 
 # Loop through your directory, creating a new dataset for each folder and upload a zip of the files.
 
-for i in $DIRECTORY/* ; do
+for datasetDir in $DIRECTORY/* ; do
     # wait between uploads to reduce to load on the server
     sleep $WAIT
 
     # Create the dataset and capture the output
     echo Creating the dataset...
-    OUTPUT=$(curl -X POST -H "Content-type:application/json" -d @$i/metadata.json "$HOSTNAME/api/dataverses/$DATAVERSE_ALIAS/datasets/?key=$API_TOKEN")
+    OUTPUT=$(curl -X POST -H "Content-type:application/json" -d @$datasetDir/metadata.json "$HOSTNAME/api/dataverses/$DATAVERSE_ALIAS/datasets/?key=$API_TOKEN")
 
     DOI=$(echo $OUTPUT | grep -o 'doi:[0-9*.[0-9]*\/[0-9A-Z]*\/[0-9A-Z]*')
     echo $DOI
 
     # TODO make sure the file isn't too large to be loaded into the DV instance
     # Check the size of files.zip
-    filesize=$(du -k $i/files.zip)
+    filesize=$(du -k $datasetDir/files.zip | cut -f1)
     echo The filesize is $filesize KB
 
     # Add files to a dataset with a zip file
     echo Uploading files...
-    curl -u $API_TOKEN: --data-binary @$i/files.zip -H "Content-Disposition: filename=files.zip" -H "Content-Type: application/zip" -H "Packaging: http://purl.org/net/sword/package/SimpleZip" $HOSTNAME/dvn/api/data-deposit/v1.1/swordv2/edit-media/study/$DOI
+    curl -u $API_TOKEN: --data-binary @$datasetDir/files.zip -H "Content-Disposition: filename=files.zip" -H "Content-Type: application/zip" -H "Packaging: http://purl.org/net/sword/package/SimpleZip" $HOSTNAME/dvn/api/data-deposit/v1.1/swordv2/edit-media/study/$DOI
 done
