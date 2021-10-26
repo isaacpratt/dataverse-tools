@@ -9,6 +9,9 @@
 #
 # requires:
 # dv-list.sh
+#
+# dependencies:
+# jq - https://stedolan.github.io/jq/
 # -----------------------------------------------------------
 
 # Read list of dataverses to check
