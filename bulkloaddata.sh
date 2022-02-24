@@ -14,13 +14,13 @@
 # Your API key
 API_TOKEN=""
 
-# The dataverse instance you are uploading to
+# The Dataverse instance you are uploading to
 HOSTNAME="" # e.g. https://demodv.scholarsportal.info
 
-# The dataverse you are uploading the datasets to. Represented as the last part of your dataverse url, e.g. for a url of https://demodv.scholarsportal.info/dataverse/algoma, the alias is algoma
+# The Dataverse collection you are uploading the datasets to. Represented as the last part of your dataverse url, e.g. for a url of https://demodv.scholarsportal.info/dataverse/algoma, the alias is algoma
 DATAVERSE_ALIAS=""
 
-# the local directory which contains all of your datasets, one dataset per folder. Each directory must contain the metadata.json file and a files.zip file which contains all of the files for the dataset.
+# The local directory which contains all of your datasets, one dataset per folder. Each directory must contain the metadata.json file and a files.zip file which contains all of the files for the dataset.
 DIRECTORY=""
 
 # time to wait between uploads in seconds - helpful if you're loading a large amount of data and/or are having server load issues
