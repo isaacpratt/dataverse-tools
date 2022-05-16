@@ -1,6 +1,8 @@
 #!/bin/bash
 
-# This script uploads multiple datasets into dataverse using the Native API. The following directory structure is used:
+# This script uploads multiple datasets into dataverse using the Native API. Files are uploaded using the SWORD API. The datasets are not published.
+# The following directory structure is used:
+#
 # datasets/
 # ├── dataset1
 # │   ├── files.zip
@@ -40,7 +42,7 @@ for datasetDir in $DIRECTORY/* ; do
     echo $DOI
 
     # TODO make sure the file isn't too large to be loaded into the DV instance
-    # Check the size of files.zip
+    # Check the size of files.zip and report to the user in KB
     filesize=$(du -k $datasetDir/files.zip | cut -f1)
     echo The filesize is $filesize KB
 
