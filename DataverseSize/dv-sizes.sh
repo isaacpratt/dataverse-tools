@@ -17,11 +17,16 @@
 # Read list of dataverses to check
 . ./dv-list.sh || exit 1
 
+# Your API key
 API_TOKEN=''
-DV_URL='' # Your dataverse installation URL, e.g. https://dataverse.scholarsportal.info
-FILENAME='dataverse-sizes-'$(date +'%Y%m%d')'.txt'
 
+# Your dataverse installation URL, e.g. https://dataverse.scholarsportal.info
+DV_URL=''
+
+# The output filename which will be created by the script
+FILENAME='dataverse-sizes-'$(date +'%Y%m%d')'.txt'
 echo $FILENAME
+
 number_of_dv=${#dvName[@]}
 
 echo "Sizes for published and unpublished data in institutional dataverses" >> $FILENAME
